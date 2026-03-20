@@ -141,6 +141,7 @@ protected:
 
 private slots:
 	void gameStarted();
+	void thermalPrint(const QImage&);
 	void gameStopped();
 	void gameCrashed(const QString&);
 	void gameFailed();
@@ -199,6 +200,7 @@ private:
 
 	CoreManager* m_manager;
 	std::shared_ptr<CoreController> m_controller;
+	QMetaObject::Connection m_thermalPrinterConnection;
 	std::unique_ptr<AudioProcessor> m_audioProcessor;
 
 	std::unique_ptr<QGBA::Display> m_display;

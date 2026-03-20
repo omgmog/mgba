@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QGBA::ThermalPrinterView</class>
+ <widget class="QWidget" name="QGBA::ThermalPrinterView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>340</width>
+    <height>340</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Thermal Printer</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QCheckBox" name="autoprint">
+     <property name="text">
+      <string>Auto-print to thermal printer</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Settings</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_pipe">
+        <property name="text">
+         <string>Pipe path</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="pipePath">
+        <property name="text">
+         <string>/tmp/DEVTERM_PRINTER_IN</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_density">
+        <property name="text">
+         <string>Density (0–15)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QSlider" name="density">
+          <property name="minimum">
+           <number>0</number>
+          </property>
+          <property name="maximum">
+           <number>15</number>
+          </property>
+          <property name="value">
+           <number>8</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="tickPosition">
+           <enum>QSlider::TicksBelow</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="densityValue">
+          <property name="minimumSize">
+           <size>
+            <width>20</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>8</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_contrast">
+        <property name="text">
+         <string>Contrast (1.0–4.0)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <layout class="QHBoxLayout">
+        <item>
+         <widget class="QSlider" name="contrast">
+          <property name="minimum">
+           <number>10</number>
+          </property>
+          <property name="maximum">
+           <number>40</number>
+          </property>
+          <property name="value">
+           <number>20</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="tickPosition">
+           <enum>QSlider::TicksBelow</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="contrastValue">
+          <property name="minimumSize">
+           <size>
+            <width>30</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>2.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_feed">
+        <property name="text">
+         <string>Feed lines</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="feedLines">
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>32</number>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_scale">
+        <property name="text">
+         <string>Scale</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="scale">
+        <item>
+         <property name="text">
+          <string>Integer 2× (centred)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Stretch to width</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_dither">
+        <property name="text">
+         <string>Dithering</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="dither">
+        <item>
+         <property name="text">
+          <string>Threshold</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ordered (Bayer)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diffuse (Floyd-Steinberg)</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Diffuse (Stucki)</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_invert">
+        <property name="text">
+         <string>Invert image</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QCheckBox" name="invert">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_instantReturn">
+        <property name="text">
+         <string>Instant print return</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QCheckBox" name="instantReturn">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close|QDialogButtonBox::Save</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -56,6 +56,7 @@
 #include "PaletteView.h"
 #include "PlacementControl.h"
 #include "PrinterView.h"
+#include "ThermalPrinterView.h"
 #include "ReportView.h"
 #include "ROMInfo.h"
 #include "SaveConverter.h"
@@ -917,6 +918,14 @@ void Window::gameStarted() {
 	multiplayerChanged();
 	updateTitle();
 
+#ifdef M_CORE_GB
+	if (m_controller->platform() == mPLATFORM_GB) {
+		m_controller->attachPrinter();
+		disconnect(m_thermalPrinterConnection);
+		m_thermalPrinterConnection = connect(m_controller.get(), &CoreController::imagePrinted, this, &Window::thermalPrint);
+	}
+#endif
+
 	m_hitUnimplementedBiosCall = false;
 	if (m_config->getOption("showFps", "1").toInt()) {
 		m_fpsTimer.start();
@@ -971,6 +980,12 @@ void Window::gameStarted() {
 
 #ifdef USE_DISCORD_RPC
 	DiscordCoordinator::gameStarted(m_controller);
+#endif
+}
+
+void Window::thermalPrint(const QImage& image) {
+#ifdef M_CORE_GB
+	ThermalPrinterView::printToThermal(image, m_config, m_controller.get());
 #endif
 }
 
@@ -1568,6 +1583,12 @@ void Window::setupMenu(QMenuBar* menubar) {
 		m_controller->attachPrinter();
 	}, "emu");
 	m_platformActions.insert(mPLATFORM_GB, gbPrint);
+
+	auto thermalPrint = addGameAction(tr("Thermal Printer Settings..."), "thermalPrint", [this]() {
+		ThermalPrinterView* view = new ThermalPrinterView(m_config);
+		openView(view);
+	}, "emu");
+	m_platformActions.insert(mPLATFORM_GB, thermalPrint);
 #endif
 
 #ifdef M_CORE_GBA

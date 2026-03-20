@@ -203,6 +203,7 @@ set(UI_FILES
 	PaletteView.ui
 	PlacementControl.ui
 	PrinterView.ui
+	ThermalPrinterView.ui
 	ReportView.ui
 	ROMInfo.ui
 	SaveConverter.ui
@@ -223,7 +224,8 @@ set(GBA_SRC
 set(GB_SRC
 	GameBoy.cpp
 	GBOverride.cpp
-	PrinterView.cpp)
+	PrinterView.cpp
+	ThermalPrinterView.cpp)
 
 set(TEST_QT_spanset_SRC
 	test/spanset.cpp
